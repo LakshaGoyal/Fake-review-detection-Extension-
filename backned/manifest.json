@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Fake Review Detector",
+    "version": "1.1",
+    "description": "Detect fake reviews on e-commerce websites.",
+    "permissions": ["activeTab", "storage", "scripting"],
+    "host_permissions": [
+      "https://www.amazon.com/*",
+      "https://www.amazon.in/*",
+      "https://www.flipkart.com/*",
+      "https://www.walmart.com/*",
+      "https://www.ebay.com/*",
+      "https://*.myntra.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.amazon.com/*",
+          "https://www.amazon.in/*",
+          "https://www.flipkart.com/*",
+          "https://www.walmart.com/*",
+          "https://www.ebay.com/*",
+          "https://*.myntra.com/*"
+        ],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images.png",
+        "48": "images.png",
+        "128": "images.png"
+      }
+    }
+  }
